@@ -2,7 +2,7 @@
 SQL, Django Models and Migrations
 
 This repository is about using SQL and Django Models/Migrations to efficiently store and access data.
-As an exercise example, I have developed a Flights mangement sytem web app; https://www.youtube.com/watch?v=juKiaHTV--M
+As an exercise example, I have developed a Flights mangement system web app; https://www.youtube.com/watch?v=juKiaHTV--M
 
 1. SQL, or Structured Query Language, is a programming language that allows us to update and query databases.
 How our data is stored ?. When using SQL, we’ll work with a relational database where we can find all of our data stored in a number of tables. Each of these tables is made up of a set number of columns and a flexible number of rows.
