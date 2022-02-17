@@ -1,0 +1,34 @@
+<!-- "login.html" will extend from 'user/layout.html',
+and inside the body block, display in an HTML Form for login porpuses.
+This will be a Form, whose action, when the user submit the form,
+let's go ahead and go to the 'log in URL' using the POST request method. 
+(when the user is logging in is submitting a form  
+so generally when doing that, you want to submit form data via POST, 
+especially in the case of user name and password wich is private data, 
+because don't want the user name and password to be passed in as GET parameters
+because those private data will show up in the URL, dont want that to happend) 
+Also the form will have a "CSRF_token" for security,
+and "Input" tags for username, password and submit button-->
+
+
+{% extends "users/layout.html" %}
+
+{% block body %}
+
+<!-- this comes from "views login_view", if the login authentication failed, go ahead and render the same users login page again, 
+but with some additional context; display a "message" that says 'invalid credentials'.
+This message logic will be inside of a div in 'login.html', so if there is a message, the user see the message printed.
+Otherwise, won't see it at all. """ -->
+    {% if message %}
+        <div>{{ message }}</div>
+    {% endif %}
+
+<!-- Login Form -->    
+    <form action="{% url 'login' %}" method="POST">
+        {% csrf_token %}
+        <input type="text" name="username" placeholder="Username">
+        <input type="password" name="password" placeholder="Pssword">
+        <input type="submit" value="Login">
+    </form>
+
+{% endblock %}

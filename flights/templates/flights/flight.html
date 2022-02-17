@@ -1,0 +1,53 @@
+{% extends "flights/layout.html" %}
+
+{% block body %}
+
+    <h1>Flight number {{ flight.id }}</h1>
+    <ul>
+        <li>Origin: {{ flight.origin }}</li>
+        <li>Destination: {{ flight.destination }}</li>
+        <li>Duration: {{ flight.duration }}</li>
+    </ul>
+
+    <h2>Passengers</h2>
+    <ul>
+        {% for p in passengers %}
+            <li>{{ p }}</li>
+        {% empty %}
+            <li>No passengers for this flight.</li>
+        {% endfor %}
+    </ul>
+
+<!-- The page has a flight booking Form whose 'action' is going to be 'URL of book',
+so once submitted is going to recall to the 'book url route' in urls.py,
+(the route with 'name="book"'), the view.book, requires as a parameter some 'flight_ID', 
+as an argument for what flight the user is booking the passenger on. 
+The method of the form submission is going to be POST.
+Also whenever I have a form in Django, need to give it the "CSRF token" 
+just for security to make sure that Django knows it's really this application 
+that is submitting this form and not a hacker, bot or someone else.
+The form incudes a dropdown list with a 'select' field in HTML and the name 
+of this select field is going to be "passenger", and the reason for that is because 
+inside of 'views.book', when get the passenger, looks inside the post data for the field 
+whose name is "passenger".
+Also, inside of a select dropdown, the user should have a bunch of options for everyone 
+who "ISN´T already a passenger" on this flight  (to get acces to everyone who isn't a passenger on the flight 
+it is defined the "non_passenger" variable on 'views.flight'). 
+Finally this Form has a 'bottom' with an input type 'Submit' to let the user submit the booking form. -->
+
+    <h2>Add Passenger</h2>
+
+    <form action="{% url 'book' flight.id %}" method="POST">
+        {% csrf_token %}
+        <select name="passenger">
+            {% for passenger in non_passenger %}
+                <option value="{{ passenger.id }}">{{ passenger }}</option>
+            {% endfor %}    
+        </select>
+        <input type="submit">
+    </form>
+
+<!-- a link that goes to the URL 'index' that goes back to flight list -->
+    <a href="{% url 'index' %}">Back to Flights list</a>
+
+{% endblock %}

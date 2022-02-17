@@ -1,0 +1,18 @@
+{% extends "users/layout.html" %}
+
+{% block body %}
+
+    <h1>Welcome, {{ request.user.first_name }}</h1>
+
+    <ul>
+        <li>Username: {{ request.user.username }}</li>
+        <li>Emal: {{ request.user.email }}</li>
+    </ul>
+
+<!-- this comes from "logout_view" that takes the user back to the login page
+with a message of logged out to indicate that the user has now been logged out.
+Then in "/user.html", add a link '<a href' that will go to the logout route  -->
+
+    <a href="{% url 'logout' %}">Log Out</a>
+
+{% endblock %}
