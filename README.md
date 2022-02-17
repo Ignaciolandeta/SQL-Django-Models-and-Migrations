@@ -20,4 +20,4 @@ There are several commands in order to manage SQL databases; create tables, Sele
 
 4. Django Admin; since it is so common for developers to have to create new objects, Django comes with a default admin interface that allows us to do this more easily.
 
-5. Users; the last thing we’ll discuss in this video is the idea of "authentication", or allowing users to log in and log out of a website. Fortunately, Django makes this very easy for us.
+5. Users; the last important thing is the idea of "authentication", or allowing users to log in and log out of a website. Fortunately, Django makes this very easy for us.
