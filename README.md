@@ -1,4 +1,4 @@
-# SQL-Django-Models-and-Migrations
+# SQL-Django-Models-and-Migrations @CS50 Harvard
 SQL, Django Models and Migrations
 
 This repository is about using SQL and Django Models/Migrations to efficiently store and access data.
